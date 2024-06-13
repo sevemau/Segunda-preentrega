@@ -1,92 +1,54 @@
 
-const persona = {
-    edad: null,
-    determinarCategoriaEdad: function () {
-        if (this.edad < 18) {
-            return "Eres menor de edad.";
-        } else if (this.edad >= 18 && this.edad <= 25) {
-            return "Eres un adulto joven.";
-        } else if (this.edad > 25 && this.edad <= 65) {
-            return "Eres un adulto.";
+class Pregunta {
+    constructor(texto, opciones, respuestaCorrecta) {
+        this.texto = texto;
+        this.opciones = opciones;
+        this.respuestaCorrecta = respuestaCorrecta;
+        this.respuestaUsuario = null;
+    }
+}
+
+const preguntas = [
+    new Pregunta("¿Cual es la capital de Francia?", ["a) Paris", "b) Londres", "c) Roma", "d) Madrid"], "a) Paris"),
+    new Pregunta("¿Cual es el planeta más grande del sistema solar?", ["a) Tierra", "b) Marte", "c) Jupiter", "d) Saturno"], "c) Jupiter"),
+    new Pregunta("¿Quien escribio 'Cien años de soledad'?", ["a) Gabriel Garcia Marquez", "b) Pablo Neruda", "c) Jorge Luis Borges", "d) Mario Vargas Llosa"], "a) Gabriel Garcia Marquez"),
+    new Pregunta("¿Cuantas patas tiene un gato?", ["a) 4", "b) 6", "c) 2", "d) 8"], "a) 4"),
+    new Pregunta("¿Cual es el oceano mas grande?", ["a) Oceano Atlantico", "b) Oceano Pacifico", "c) Oceano Indico", "d) Oceano Artico"], "b) Oceano Pacifico"),
+    new Pregunta("¿Quien pintó la Mona Lisa?", ["a) Vincent van Gogh", "b) Leonardo da Vinci", "c) Pablo Picasso", "d) Claude Monet"], "b) Leonardo da Vinci")
+];
+
+const registrarRespuestas = () => {
+    preguntas.forEach(pregunta => {
+        let mensaje = `${pregunta.texto}\n`;
+        pregunta.opciones.forEach((opcion, i) => {
+            mensaje += `${opcion}\n`;
+        });
+
+        let respuesta;
+        do {
+            respuesta = prompt(mensaje + "Ingrese la letra de su respuesta (a, b, c, d):").toLowerCase(); // Convertir a minúsculas
+        } while (!/^[a-d]$/.test(respuesta));
+
+        pregunta.respuestaUsuario = pregunta.opciones[respuesta.charCodeAt(0) - 97];
+    });
+}
+
+const evaluarRespuestas = () => {
+    let correctas = 0;
+    let incorrectas = 0;
+
+    preguntas.forEach(pregunta => {
+        if (pregunta.respuestaUsuario === pregunta.respuestaCorrecta) {
+            correctas++;
         } else {
-            return "Eres un anciano.";
+            incorrectas++;
         }
-    }
-};
+    });
 
-
-const solicitarEdad = () => {
-    let edad = parseInt(prompt("Hola. Por favor, ingrese su edad:"));
-    while (isNaN(edad) || edad <= 0) {
-        edad = parseInt(prompt("Por favor, ingrese un número válido para su edad:"));
-    }
-    return edad;
+    console.log(`Respuestas Correctas: ${correctas}`);
+    console.log(`Respuestas Incorrectas: ${incorrectas}`);
+    alert(`Respuestas Correctas: ${correctas}\nRespuestas Incorrectas: ${incorrectas}`);
 }
 
-
-persona.edad = solicitarEdad();
-
-while (!confirm(`Si ${persona.edad} es tu edad correcta dale en aceptar, sino volveremos a preguntarte!`)) {
-    persona.edad = solicitarEdad();
-}
-
-
-alert(persona.determinarCategoriaEdad());
-
-alert("Ahora (NADA QUE VER) probemos esta calculadora. Dale en aceptar cuando estés listo!");
-
-
-const operadoresPermitidos = ['+', '-', '*', '/'];
-
-
-const realizarOperacion = (operando1, operando2, operador) => {
-    switch (operador) {
-        case '+':
-            return operando1 + operando2;
-        case '-':
-            return operando1 - operando2;
-        case '*':
-            return operando1 * operando2;
-        case '/':
-            return operando1 / operando2;
-        default:
-            return NaN;
-    }
-}
-
-
-const obtenerOperacion = () => {
-    let operacion = prompt("Ahora ingresa la operación que deseas realizar. Ej: (+, -, *, /)");
-    while (!operadoresPermitidos.includes(operacion)) {
-        operacion = prompt("La operación no es válida. Por favor, ingresa una operación válida! Ej: (+, -, *, /)");
-    }
-    return operacion;
-}
-
-// Función para realizar el cálculo y mostrar el resultado
-const calcular = () => {
-    let operando1 = parseFloat(prompt("Ingresa el N°1 para realizar la operación:"));
-
-    // Solicito operando1 hasta que se ingrese un número válido
-    while (isNaN(operando1)) {
-        operando1 = parseFloat(prompt("Por favor, ingresa el N°1 (válido) para realizar la operación:"));
-    }
-
-    let operando2 = parseFloat(prompt("Ahora ingresa el N°2:"));
-
-    // Solicito operando2 hasta que se ingrese un número válido
-    while (isNaN(operando2)) {
-        operando2 = parseFloat(prompt("Por favor, ahora ingresa el N°2 (válido):"));
-    }
-
-    const operacion = obtenerOperacion();
-    const resultado = realizarOperacion(operando1, operando2, operacion);
-
-    if (isNaN(resultado)) {
-        alert("Operación no válida.");
-    } else {
-        alert(`El resultado de la operación ${operando1} ${operacion} ${operando2} es = ${resultado}`);
-    }
-}
-
-calcular();
+registrarRespuestas();
+evaluarRespuestas();
