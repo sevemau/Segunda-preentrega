@@ -26,7 +26,7 @@ const registrarRespuestas = () => {
 
         let respuesta;
         do {
-            respuesta = prompt(mensaje + "Ingrese la letra de su respuesta (a, b, c, d):").toLowerCase(); // Convertir a minúsculas
+            respuesta = prompt(mensaje + "Ingrese la letra de su respuesta (a, b, c, d):").toLowerCase();
         } while (!/^[a-d]$/.test(respuesta));
 
         pregunta.respuestaUsuario = pregunta.opciones[respuesta.charCodeAt(0) - 97];
