@@ -9,12 +9,12 @@ class Pregunta {
 }
 
 const preguntas = [
-    new Pregunta("¿Cual es la capital de Francia?", ["a) Paris", "b) Londres", "c) Roma", "d) Madrid"], "a) Paris"),
-    new Pregunta("¿Cual es el planeta más grande del sistema solar?", ["a) Tierra", "b) Marte", "c) Jupiter", "d) Saturno"], "c) Jupiter"),
-    new Pregunta("¿Quien escribio 'Cien años de soledad'?", ["a) Gabriel Garcia Marquez", "b) Pablo Neruda", "c) Jorge Luis Borges", "d) Mario Vargas Llosa"], "a) Gabriel Garcia Marquez"),
-    new Pregunta("¿Cuantas patas tiene un gato?", ["a) 4", "b) 6", "c) 2", "d) 8"], "a) 4"),
-    new Pregunta("¿Cual es el oceano mas grande?", ["a) Oceano Atlantico", "b) Oceano Pacifico", "c) Oceano Indico", "d) Oceano Artico"], "b) Oceano Pacifico"),
-    new Pregunta("¿Quien pintó la Mona Lisa?", ["a) Vincent van Gogh", "b) Leonardo da Vinci", "c) Pablo Picasso", "d) Claude Monet"], "b) Leonardo da Vinci")
+    new Pregunta("¿Cuántas veces ha ganado Argentina la Copa del Mundo?", ["a) 1", "b) 2", "c) 3", "d) 4"], "c) 3"),
+    new Pregunta("¿Quién fue el entrenador de Argentina durante el Mundial de 1986?", ["a) César Luis Menotti", "b) Marcelo Bielsa", "c) Carlos Salvador Bilardo", "d) Alfio Basile"], "c) Carlos Salvador Bilardo"),
+    new Pregunta("¿Cuál fue el resultado de la final del Mundial 1978 y quién fue el rival de Argentina?", ["a) 2-1 contra Brasil", "b) 3-1 contra Países Bajos", "c) 1-0 contra Alemania", "d) 4-2 contra Italia"], "b) 3-1 contra Países Bajos"),
+    new Pregunta("¿Qué jugador argentino es famoso por el `Gol del Siglo` en el Mundial de 1986?", ["a) Gabriel Batistuta", "b) Lionel Messi", "c) Diego Maradona", "d) Sergio Agüero"], "c) Diego Maradona"),
+    new Pregunta("¿Quién fue el capitán de la selección argentina en el Mundial de 2022?", ["a) Ángel Di María", "b) Lionel Messi", "c) Javier Mascherano", "d) Sergio Romero"], "b) Lionel Messi"),
+    new Pregunta("¿En qué país se celebró el Mundial de 1978 y qué importancia tuvo para Argentina?", ["a) Brasil, fue la primera vez que Argentina ganó el torneo.", "b) España, fue la primera vez que Argentina llegó a la final.", "c) Argentina, fue la primera vez que Argentina ganó el torneo.", "d) Italia, fue la primera vez que Argentina participó en el torneo."], "c) Argentina, fue la primera vez que Argentina ganó el torneo.")
 ];
 
 const registrarRespuestas = () => {
